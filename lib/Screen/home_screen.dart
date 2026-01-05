@@ -1,5 +1,6 @@
-//import 'package:bit_learns/Screen/next_page.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/Custom_Travel_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,38 +10,83 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // Boolean variable to control shape change
-  // false → shape will be circle
-  // true → shape will be rectangle
-  bool isChangedShape = false;
-
-  // Variable to store number of shapes
-  // Starts with 1 shape
-  int count = 1;
-
-  // Variable to store number value
-  // Used for displaying text multiple times
-  int numer = 0;
-
   final List<String> category = [
+    'All',
     'Popular',
     'Featured',
-    'Most Visited',
-    'Europe',
-    'Asia',
+    'New Arrivals',
+    'Recommended',
+    'Recommended',
   ];
+
+  int selectedCategoryIndex = 0;
+
+  final List<Map<String, String>> travelDetails = [
+    {
+      'title': 'Northern Hills',
+      'rating': '4.5',
+      'img':
+          'https://media.istockphoto.com/id/904172104/photo/weve-made-it-all-this-way-i-am-proud.jpg?s=612x612&w=0&k=20&c=MewnsAhbeGRcMBN9_ZKhThmqPK6c8nCT8XYk5ZM_hdg=',
+    },
+    {
+      'title': 'Lakeside View ',
+      'rating': '4.8',
+      'img':
+          'https://t3.ftcdn.net/jpg/03/01/84/54/360_F_301845445_Aj4iICMuzOfFkKW0U43l4aFAo05HZxIZ.jpg',
+    },
+    {
+      'title': 'Mountain Escape',
+      'rating': '4.3',
+      'img':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5uEjTz29AHOTZQpLbr85_tPnn3oKBDTpCkQ&s',
+    },
+    {
+      'title': 'Desert Adventure',
+      'rating': '4.6',
+      'img':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9G95vc_d7_1Y4ev_THe0njfGfHoD31tphfA&s',
+    },
+    {
+      'title': 'Poon Hill',
+      'rating': '4.6',
+      'img':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREd15Vp10hEEp3JyPB2ZTzyP6Y7fvh3IMytA&s',
+    },
+    {
+      'title': 'Lake View',
+      'rating': '4.6',
+      'img':
+          'https://media.istockphoto.com/id/1337232523/photo/high-angle-view-of-a-lake-and-forest.jpg?s=612x612&w=0&k=20&c=72ZZZG5jNaEE0QRq6o4pUk3CI0gG-Lw5AeWQUVgO7zQ=',
+    },
+    {
+      'title': 'Langtang Valley',
+      'rating': '4.6',
+      'img':
+          'https://res.klook.com/image/upload/w_750,h_469,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/gumsusozweqkhrb5z2jq.jpg',
+    },
+    {
+      'title': 'Manaslu Conservation Area',
+      'rating': '4.6',
+      'img':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbKGht0ud2K3syHUoQXMibCeBfpziYRkxeYg&s',
+    },
+  ];
+
+  final PageController _pageController = PageController(viewportFraction: 0.85);
+  int currentPage = 0;
+
   @override
   Widget build(BuildContext context) {
+    //
     return Scaffold(
       //refernce web
       // header --> appbar
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        leading: Icon(Icons.menu, color: Colors.white),
+        leading: Image.asset('assets/img.jpg'),
         centerTitle: true,
         title: Text(
           'Discover',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
         ),
         actions: [
           Padding(
@@ -58,251 +104,97 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(10.0),
 
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             spacing: 10,
             children: [
-              ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: category.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      category[index],
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.purple,
-                        fontSize: 18,
+              SizedBox(
+                height: 20,
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: category.length,
+                  itemBuilder: (context, index) {
+                    final isSelected = selectedCategoryIndex == index;
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedCategoryIndex = index;
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 7.0),
+                        child: Text(
+                          category[index],
+                          style: TextStyle(
+                            fontWeight: isSelected
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                            color: isSelected
+                                ? Color(0xFF403A7A)
+                                : Colors.black,
+                            fontSize: 18,
+                          ),
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-
-              //for Spacing one is   ##sizebox and another is spacing provided in row widget
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  spacing: 10,
-                  children: [
-                    Card(),
-
-                    Container(
-                      height: 200,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/travel.jpg"),
-                          fit: BoxFit.cover,
-                        ),
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(20),
+              SizedBox(
+                height: 200,
+                child: PageView.builder(
+                  padEnds: false,
+                  controller: _pageController,
+                  itemCount: travelDetails.length,
+                  onPageChanged: (index) {
+                    setState(() => currentPage = index);
+                  },
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: CustomTravelCard(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) =>product_screen()))
+                        },
+                        title: travelDetails[index]['title']!,
+                        rating: travelDetails[index]['rating']!,
+                        img: travelDetails[index]['img']!,
                       ),
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          height: 80,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.black.withValues(alpha: 0.3),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 8,
-                                  horizontal: 20,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Northern Mountain',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24,
-                                      ),
-                                    ),
-
-                                    Container(
-                                      width: 25,
-                                      height: 25,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Icon(
-                                        Icons.favorite,
-                                        color: Colors.red,
-                                        size: 16,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                ),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                      size: 16,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                      size: 16,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                      size: 16,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                      size: 16,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                      size: 16,
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      "4.5",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
 
-              // SizedBox(height: 100),
-              // Container(
-              //   height: 100,
-              //   width: 100,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Recommended',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  Text('View all'),
+                ],
+              ),
 
-              //   decoration: BoxDecoration(
-              //     color: Colors.green,
-              //     borderRadius: BorderRadius.all(Radius.circular(10)),
-              //   ),
-              // ),
-              // SingleChildScrollView allows scrolling
-              // Here it is used for horizontal scrolling
-              // SingleChildScrollView(
-              //   // Scroll direction is set to horizontal
-              //   scrollDirection: Axis.horizontal,
-
-              //   child: Row(
-              //     // Space between each container
-              //     spacing: 10,
-
-              //     children: [
-              //       // Loop to create multiple containers
-              //       // Number of containers depends on 'count'
-              //       for (int i = 0; i < count; i++)
-              //         Container(
-              //           // Height of each shape
-              //           height: 100,
-
-              //           // Width of each shape
-              //           width: 100,
-
-              //           decoration: BoxDecoration(
-              //             // Change shape based on isChangedShape value
-              //             // If true → rectangle
-              //             // If false → circle
-              //             shape: isChangedShape
-              //                 ? BoxShape.rectangle
-              //                 : BoxShape.circle,
-
-              //             // Color of the shape
-              //             color: Colors.yellow,
-              //           ),
-              //         ),
-              //     ],
-              //   ),
-              // ),
-
-              // // Image.asset("assets/img.png", height: 200),
-
-              // //for text
-              // Text("fsdf"),
-              // Icon(Icons.add),
-              // // Button with background color (Elevated button)
-              // ElevatedButton(
-              //   onPressed: () {
-              //     setState(() {
-              //       // Change the value of isChangedShape
-              //       // If it is true, make it false
-              //       // If it is false, make it true
-              //       isChangedShape = !isChangedShape;
-              //     });
-              //   },
-              //   // Text shown on the button
-              //   child: Text("Change Shape"),
-              // ),
-
-              // // Loop to show text multiple times
-              // // It will display the value of 'numer' as text
-              // // The text will repeat 'numer' times
-              // for (int i = 0; i < numer; i++) Text(numer.toString()),
-
-              // // Button with border only (Outlined button)
-              // OutlinedButton(
-              //   onPressed: () {
-              //     setState(() {
-              //       // Increase the count value by 1
-              //       // Used to add more shapes
-              //       count++;
-              //     });
-              //   },
-              //   // Text shown on the button
-              //   child: Text("Add Shape"),
-              // ),
-
-              // // Simple text button (no background or border)
-              // TextButton(
-              //   onPressed: () {
-              //     setState(() {
-              //       // Increase the numer value by 1
-              //       // This will increase the number of texts shown
-              //       numer++;
-              //     });
-              //   },
-              //   // Text shown on the button
-              //   child: Text("Text button"),
-              // ),
-
-              //Container, Column /Row, Basic UI Widgets: Text, Image, Icon, SizedBox, Padding, Button (Elevated,Text, Outline)
-              // Column(
-              //   spacing: 10,
-              //   children: [
-
-              //   ],
-              // ),
-
-              //reuseable
-              //grid widget
-              //list widget
+              SizedBox(
+                height: 500,
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemCount: travelDetails.length,
+                  itemBuilder: (context, index) {
+                    return CustomTravelCard(
+                      title: travelDetails[index]['title']!,
+                      rating: travelDetails[index]['rating']!,
+                      img: travelDetails[index]['img']!,
+                      height: 150,
+                      width: 150,
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

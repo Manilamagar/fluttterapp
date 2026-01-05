@@ -1,4 +1,4 @@
-import 'package:bit_learns/Screen/home_screen.dart';
+import 'package:bit_learns/Screen/initial_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class Bit extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Merriweather'),
 
-      home: HomePage(),
+      home: InitialScreen(),
     );
   }
 }
