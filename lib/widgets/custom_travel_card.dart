@@ -7,14 +7,17 @@ class CustomTravelCard extends StatelessWidget {
   final double? height;
   final double? width;
   final void Function()? onTap;
+  final bool isGrid;
+
   const CustomTravelCard({
     super.key,
     required this.title,
     required this.rating,
     required this.img,
     this.height = 200,
-    this.width = 300,
+    this.width = 100,
     this.onTap,
+    required this.isGrid,
   });
 
   @override
@@ -32,7 +35,7 @@ class CustomTravelCard extends StatelessWidget {
         child: Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 80,
+            height: isGrid ? 50 : 70,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.black.withValues(alpha: 0.3),
@@ -53,13 +56,13 @@ class CustomTravelCard extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                          fontSize: isGrid ? 16 : 24,
                         ),
                       ),
 
                       Container(
-                        width: 25,
-                        height: 25,
+                        width: isGrid ? 15 : 25,
+                        height: isGrid ? 15 : 25,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           shape: BoxShape.circle,
@@ -67,7 +70,7 @@ class CustomTravelCard extends StatelessWidget {
                         child: Icon(
                           Icons.favorite,
                           color: Colors.red,
-                          size: 16,
+                          size: isGrid ? 10 : 16,
                         ),
                       ),
                     ],
@@ -88,7 +91,7 @@ class CustomTravelCard extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: isGrid ? 10 : 16,
                         ),
                       ),
                     ],

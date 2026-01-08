@@ -1,3 +1,4 @@
+import 'package:bit_learns/Screen/product_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/Custom_Travel_card.dart';
@@ -27,48 +28,59 @@ class _HomePageState extends State<HomePage> {
       'rating': '4.5',
       'img':
           'https://media.istockphoto.com/id/904172104/photo/weve-made-it-all-this-way-i-am-proud.jpg?s=612x612&w=0&k=20&c=MewnsAhbeGRcMBN9_ZKhThmqPK6c8nCT8XYk5ZM_hdg=',
+      'desc':
+          'Experience the majestic Northern Hills with breathtaking views and serene landscapes.',
     },
     {
       'title': 'Lakeside View ',
       'rating': '4.8',
       'img':
           'https://t3.ftcdn.net/jpg/03/01/84/54/360_F_301845445_Aj4iICMuzOfFkKW0U43l4aFAo05HZxIZ.jpg',
+      'desc':
+          'Relax by the tranquil lakeside with stunning water views and peaceful surroundings.',
     },
     {
       'title': 'Mountain Escape',
       'rating': '4.3',
       'img':
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5uEjTz29AHOTZQpLbr85_tPnn3oKBDTpCkQ&s',
+      'desc': 'Escape to the mountains for adventure and natural beauty.',
     },
     {
       'title': 'Desert Adventure',
       'rating': '4.6',
       'img':
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9G95vc_d7_1Y4ev_THe0njfGfHoD31tphfA&s',
+      'desc': 'Embark on an exciting desert adventure with unique landscapes.',
     },
     {
       'title': 'Poon Hill',
       'rating': '4.6',
       'img':
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREd15Vp10hEEp3JyPB2ZTzyP6Y7fvh3IMytA&s',
+      'desc': 'Climb Poon Hill for panoramic views of the Annapurna range.',
     },
     {
       'title': 'Lake View',
       'rating': '4.6',
       'img':
           'https://media.istockphoto.com/id/1337232523/photo/high-angle-view-of-a-lake-and-forest.jpg?s=612x612&w=0&k=20&c=72ZZZG5jNaEE0QRq6o4pUk3CI0gG-Lw5AeWQUVgO7zQ=',
+      'desc': 'Enjoy the scenic lake view surrounded by lush forests.',
     },
     {
       'title': 'Langtang Valley',
       'rating': '4.6',
       'img':
           'https://res.klook.com/image/upload/w_750,h_469,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/gumsusozweqkhrb5z2jq.jpg',
+      'desc':
+          'Explore the beautiful Langtang Valley with its rich culture and nature.',
     },
     {
       'title': 'Manaslu Conservation Area',
       'rating': '4.6',
       'img':
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbKGht0ud2K3syHUoQXMibCeBfpziYRkxeYg&s',
+      'desc': 'Discover the biodiversity of Manaslu Conservation Area.',
     },
   ];
 
@@ -140,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: 200,
+                height: 300,
                 child: PageView.builder(
                   padEnds: false,
                   controller: _pageController,
@@ -152,8 +164,18 @@ class _HomePageState extends State<HomePage> {
                     return Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: CustomTravelCard(
+                        isGrid: false,
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) =>product_screen()))
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ProductDesScreen(
+                                title: travelDetails[index]['title']!,
+                                rating: travelDetails[index]['rating']!,
+                                img: travelDetails[index]['img']!,
+                                desc: travelDetails[index]['desc']!,
+                              ),
+                            ),
+                          );
                         },
                         title: travelDetails[index]['title']!,
                         rating: travelDetails[index]['rating']!,
@@ -189,8 +211,21 @@ class _HomePageState extends State<HomePage> {
                       title: travelDetails[index]['title']!,
                       rating: travelDetails[index]['rating']!,
                       img: travelDetails[index]['img']!,
-                      height: 150,
-                      width: 150,
+                      height: 180,
+                      width: 175,
+                      isGrid: true,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ProductDesScreen(
+                              title: travelDetails[index]['title']!,
+                              rating: travelDetails[index]['rating']!,
+                              img: travelDetails[index]['img']!,
+                              desc: travelDetails[index]['desc']!,
+                            ),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
