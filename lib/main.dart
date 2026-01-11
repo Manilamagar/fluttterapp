@@ -1,3 +1,4 @@
+import 'package:bit_learns/Screen/Login_screen.dart';
 import 'package:bit_learns/Screen/initial_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class Bit extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Merriweather'),
 
-      home: InitialScreen(),
+      home: LoginScreen(),
     );
   }
 }
@@ -286,68 +287,68 @@ class Bit extends StatelessWidget {
 //                 ),
 //               ),
 
-//               // Container(height: 100, width: 100, color: Colors.red),
-//               // // SizedBox(height: 10),
-//               // Container(height: 100, width: 100,
-//               // decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),
-//               // color: Colors.green
-//               // ),
-//               // ),
-//               // Container(height: 100,width: 100,
-//               // decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),
-//               // color: Colors.blue ),
-//               // ),
-//               // SizedBox(height: 100),
-//               // SingleChildScrollView(
-//               //   scrollDirection: Axis.horizontal,
-//               //   child: Row(
-//               //     spacing: 10,
-//               //     children: [
-//               //       for (int i = 0; i < count; i++)
-//               //         Container(
-//               //           height: 100,
-//               //           width: 100,
-//               //           decoration: BoxDecoration(
-//               //             shape: isChangedShape
-//               //                 ? BoxShape.rectangle
-//               //                 : BoxShape.circle,
-//               //             color: Colors.yellow,
-//               //           ),
-//               //         ),
-//               //     ],
-//               //   ),
-//               // ),
-//               // //Image.asset("assets/img.png", height: 200),
-//               // // Image.asset("assets/img.jpg", height: 100),
+              // Container(height: 100, width: 100, color: Colors.red),
+              // // SizedBox(height: 10),
+              // Container(height: 100, width: 100,
+              // decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),
+              // color: Colors.green
+              // ),
+              // ),
+              // Container(height: 100,width: 100,
+              // decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),
+              // color: Colors.blue ),
+              // ),
+              // SizedBox(height: 100),
+              // SingleChildScrollView(
+              //   scrollDirection: Axis.horizontal,
+              //   child: Row(
+              //     spacing: 10,
+              //     children: [
+              //       for (int i = 0; i < count; i++)
+              //         Container(
+              //           height: 100,
+              //           width: 100,
+              //           decoration: BoxDecoration(
+              //             shape: isChangedShape
+              //                 ? BoxShape.rectangle
+              //                 : BoxShape.circle,
+              //             color: Colors.yellow,
+              //           ),
+              //         ),
+              //     ],
+              //   ),
+              // ),
+              // //Image.asset("assets/img.png", height: 200),
+              // // Image.asset("assets/img.jpg", height: 100),
 
-//               // //for text
-//               // Text("fsdf"),
-//               // Icon(Icons.add),
-//               // ElevatedButton(
-//               //   onPressed: () {
-//               //     setState(() {
-//               //       isChangedShape = !isChangedShape;
-//               //     });
-//               //   },
-//               //   child: Text("Change Shape"),
-//               // ),
-//               // Text(numer.toString()),
-//               // OutlinedButton(
-//               //   onPressed: () {
-//               //     setState(() {
-//               //       count++;
-//               //     });
-//               //   },
-//               //   child: Text("Add Shape"),
-//               // ),
-//               // TextButton(
-//               //   onPressed: () {
-//               //     setState(() {
-//               //       numer++;
-//               //     });
-//               //   },
-//               //   child: Text("Text button"),
-//               // ),
+              // //for text
+              // Text("fsdf"),
+              // Icon(Icons.add),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     setState(() {
+              //       isChangedShape = !isChangedShape;
+              //     });
+              //   },
+              //   child: Text("Change Shape"),
+              // ),
+              // Text(numer.toString()),
+              // OutlinedButton(
+              //   onPressed: () {
+              //     setState(() {
+              //       count++;
+              //     });
+              //   },
+              //   child: Text("Add Shape"),
+              // ),
+              // TextButton(
+              //   onPressed: () {
+              //     setState(() {
+              //       numer++;
+              //     });
+              //   },
+              //   child: Text("Text button"),
+              // ),
 //             ],
 //           ),
 //         ),

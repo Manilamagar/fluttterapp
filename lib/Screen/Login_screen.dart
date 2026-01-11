@@ -32,7 +32,9 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               CustomButton(text: 'login'),
-              onPressed: () {},
+              onPressed: (onPressed) {
+
+              },
               backgroundColor : Color(0xFF7C6FFF),
               textStyle:TextStyle(
                 

@@ -157,6 +157,33 @@ class _ProductDesScreenState extends State<ProductDesScreen> {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Text(widget.desc, style: TextStyle(fontSize: 16)),
+                  SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "\$${package.toString()}",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 35,
+                              color: Color(0xFF7C6FFF),
+                            ),
+                          ),
+                          Text(
+                            '/Package',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Color(0xFF7C6FFF),
+                            ),
+                          ),
+                        ],
+                      ),
+                      
+                    ],
+                  ),
                 ],
               ),
             ),

@@ -186,6 +186,17 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
+
+                SmoothPageIndicator(
+                controller: _pageController,
+                count: travelDetails.length,
+                effect: WormEffect(
+                  dotHeight: 8,
+                  dotWidth: 8,
+                  activeDotColor: Color(0xFF403A7A),
+                ),
+              ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
